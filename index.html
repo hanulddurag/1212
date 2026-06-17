@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-2-1 (2) 정서를 표현하는 글 쓰기</title>
+    <!-- Tailwind CSS 및 FontAwesome 아이콘 추가 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* 플래시 카드 입체 회전 효과 */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+
+    <!-- 커스텀 알림 모달 -->
+    <div id="custom-alert" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 animate-fade-in text-center">
+            <div class="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 mb-2">안내</h3>
+            <p id="custom-alert-message" class="text-slate-600 text-base font-bold mb-6 leading-relaxed"></p>
+            <button onclick="closeAlert()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <!-- 상단 헤더 -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <span class="bg-white text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center font-black text-xl shadow">국어</span>
+                <div>
+                    <span class="text-sm text-indigo-100 block font-bold">비상교육 중등 국어 1-2</span>
+                    <h1 class="text-2xl md:text-3xl font-black tracking-tight">1-2-1 (2) 정서를 표현하는 글 쓰기</h1>
+                </div>
+            </div>
+            <!-- 내비게이션 탭 -->
+            <nav class="flex bg-indigo-700/50 p-1.5 rounded-xl backdrop-blur-sm">
+                <button onclick="changeTab('concept')" id="tab-concept" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 bg-white text-indigo-700 shadow">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> 개념 학습
+                </button>
+                <button onclick="changeTab('vocab')" id="tab-vocab" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 text-indigo-100 hover:text-white">
+                    <i class="fa-solid fa-rectangle-list mr-1"></i> 어휘 정리
+                </button>
+                <button onclick="changeTab('quiz')" id="tab-quiz" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 text-indigo-100 hover:text-white">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> 형성 평가
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+
+        <!-- ==================== 1. 개념 탭 ==================== -->
+        <div id="section-concept" class="space-y-10 animate-fade-in">
+            
+            <!-- 개념 개요 카드 -->
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="p-4 bg-indigo-50 text-indigo-600 rounded-2xl"><i class="fa-solid fa-book-bookmark text-2xl"></i></span>
+                    <h2 class="text-3xl font-black text-slate-900">정서를 표현하는 글의 정의와 가치</h2>
+                </div>
+                <div class="space-y-8">
+                    <div class="bg-indigo-50/60 p-6 md:p-8 rounded-2xl border border-indigo-100">
+                        <h3 class="text-2xl font-black text-indigo-900 mb-3">정서를 표현하는 글</h3>
+                        <p class="text-slate-800 leading-relaxed text-base md:text-lg">
+                            자신의 <strong class="text-indigo-600 font-extrabold underline decoration-2 underline-offset-4">경험</strong>을 통해 얻게 된 <strong class="text-indigo-600 font-extrabold underline decoration-2 underline-offset-4">생각이나 깨달음, 정서</strong>를 진솔하게 표현한 글임. 대표적인 갈래로 <strong class="bg-indigo-100 px-2 py-0.5 rounded text-indigo-900 font-extrabold">수필</strong>, 기행문, 일기 등이 <strong class="font-bold">있음</strong>.
+                        </p>
+                    </div>
+                    <div class="bg-purple-50/60 p-6 md:p-8 rounded-2xl border border-purple-100">
+                        <h3 class="text-2xl font-black text-purple-900 mb-3">글을 쓰고 읽는 가치</h3>
+                        <ul class="space-y-4 text-base md:text-lg text-slate-800">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-purple-500 mt-1.5 text-lg"></i>
+                                <span><strong class="font-bold">글쓴이의 가치:</strong> 글을 쓰는 과정에서 자신을 깊이 있게 <strong class="text-purple-700 font-black">성찰</strong>하고, 건강한 <strong class="text-purple-700 font-black">자아를 형성</strong>할 수 있음.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-purple-500 mt-1.5 text-lg"></i>
+                                <span><strong class="font-bold">독자의 가치:</strong> 글 속에 담긴 타인의 진솔한 마음에 공감하며 깊은 <strong class="text-purple-700 font-black">감동과 즐거움</strong>을 느낄 수 있음.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 글쓰기 과정 타임라인 -->
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="p-4 bg-amber-50 text-amber-600 rounded-2xl"><i class="fa-solid fa-road text-2xl"></i></span>
+                    <h2 class="text-3xl font-black text-slate-900">정서를 표현하는 글 쓰기 과정 및 예시</h2>
+                </div>
+                <div class="space-y-6 relative">
+                    <div class="bg-slate-50 hover:bg-indigo-50/40 p-6 md:p-8 rounded-2xl border border-slate-200 transition duration-300 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="shrink-0 w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-black text-2xl shadow-sm">01</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-2xl font-black text-slate-950 mb-3">계획하기</h4>
+                            <p class="text-base text-slate-700 leading-relaxed font-medium mb-4">
+                                자신의 경험을 자유롭게 떠올리고, 그중에서 글의 재료인 <strong class="text-indigo-600 font-extrabold">글감</strong>을 <strong class="font-bold">선택함</strong>.
+                            </p>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 text-sm md:text-base text-slate-700 shadow-sm">
+                                <strong class="text-indigo-600 block mb-1"><i class="fa-solid fa-pen-nib mr-1"></i>교과서 본문 적용 예시:</strong> 
+                                비가 몹시 내리던 어느 초여름 날, <strong class="font-bold">택배 기사이신 아빠를 따라가 배달 업무를 도왔던 인상 깊은 경험</strong>을 수필의 글감으로 선정함.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 hover:bg-indigo-50/40 p-6 md:p-8 rounded-2xl border border-slate-200 transition duration-300 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="shrink-0 w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-black text-2xl shadow-sm">02</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-2xl font-black text-slate-950 mb-3">내용 생성하기</h4>
+                            <p class="text-base text-slate-700 leading-relaxed font-medium mb-4">
+                                선택한 경험을 자세히 떠올려 구체화하고, <strong class="text-indigo-600 font-extrabold">글로 쓸 내용</strong>을 다양하게 <strong class="font-bold">마련함</strong>.
+                            </p>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 text-sm md:text-base text-slate-700 shadow-sm">
+                                <strong class="text-indigo-600 block mb-1"><i class="fa-solid fa-pen-nib mr-1"></i>교과서 본문 적용 예시:</strong> 
+                                까칠해진 아빠의 손, 빼곡하게 쌓인 수많은 택배 상자, 주소를 외우지 않고도 척척 물건을 찾아내는 경이로운 아빠의 모습, 아빠와 나눈 감동적인 대화 내용 등을 세부 쓸거리로 <strong class="font-bold">떠올림</strong>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 hover:bg-indigo-50/40 p-6 md:p-8 rounded-2xl border border-slate-200 transition duration-300 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="shrink-0 w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-black text-2xl shadow-sm">03</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-2xl font-black text-slate-950 mb-3">내용 조직하기</h4>
+                            <p class="text-base text-slate-700 leading-relaxed font-medium mb-4">
+                                경험과 정서가 독자에게 잘 드러나도록 처음-중간-끝 등의 구조로 <strong class="text-indigo-600 font-extrabold">개요</strong>를 <strong class="font-bold">작성함</strong>.
+                            </p>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 text-sm md:text-base text-slate-700 shadow-sm">
+                                <strong class="text-indigo-600 block mb-2"><i class="fa-solid fa-pen-nib mr-1"></i>교과서 본문 적용 예시:</strong> 
+                                <ul class="list-disc list-inside space-y-1 pl-1">
+                                    <li><strong class="font-bold">처음:</strong> 비 오는 날 아빠의 택배 일을 도우며 안타까움을 느낌.</li>
+                                    <li><strong class="font-bold">중간:</strong> 척척 물건을 배달하는 아빠의 모습에 경이로움을 느끼고 직업에 대한 자부심을 들음.</li>
+                                    <li><strong class="font-bold">끝:</strong> 아빠가 하는 일의 소중한 가치를 깨달음.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 hover:bg-indigo-50/40 p-6 md:p-8 rounded-2xl border border-slate-200 transition duration-300 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="shrink-0 w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-black text-2xl shadow-sm">04</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-2xl font-black text-slate-950 mb-3">표현하기</h4>
+                            <p class="text-base text-slate-700 leading-relaxed font-medium mb-4">
+                                <strong class="text-indigo-600 font-extrabold">다양한 표현</strong>(비유, 묘사, 대화 인용 등)을 활용해 정서와 경험을 생생하고 진솔하게 <strong class="font-bold">서술함</strong>.
+                            </p>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 text-sm md:text-base text-slate-700 shadow-sm">
+                                <strong class="text-indigo-600 block mb-1"><i class="fa-solid fa-pen-nib mr-1"></i>교과서 본문 적용 예시:</strong> 
+                                아빠의 숙련도를 <strong class="font-bold">'엄청난 용량의 컴퓨터 프로그램'</strong>에 빗대고, 아빠의 존재를 <strong class="font-bold">'사계절의 산타'</strong>로 비유함. 또한 아빠와 나눈 대화를 <strong class="font-bold">직접 인용</strong>하여 현장감과 깨달음을 진솔하게 표현함.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 hover:bg-indigo-50/40 p-6 md:p-8 rounded-2xl border border-slate-200 transition duration-300 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="shrink-0 w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-black text-2xl shadow-sm">05</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-2xl font-black text-slate-950 mb-3">고쳐쓰기</h4>
+                            <p class="text-base text-slate-700 leading-relaxed font-medium mb-4">
+                                완성된 글을 다시 읽으며 글 전체 흐름, 문단, 문장 수준에서 점검하고 <strong class="text-indigo-600 font-extrabold">부족한 부분</strong>을 <strong class="font-bold">다듬음</strong>.
+                            </p>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 text-sm md:text-base text-slate-700 shadow-sm">
+                                <strong class="text-indigo-600 block mb-1"><i class="fa-solid fa-pen-nib mr-1"></i>교과서 본문 적용 예시:</strong> 
+                                독자의 호기심을 유발하고 주제를 더 압축적으로 드러내기 위해 밋밋한 가제였던 '택배와 아빠'에서 <strong class="font-bold">「탑차를 끄는 사계절의 산타」</strong>로 글의 제목을 감각적으로 수정함.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 작품 제재 정리: 탑차를 끄는 사계절의 산타 -->
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
+                    <div class="flex items-center gap-4">
+                        <span class="p-4 bg-rose-50 text-rose-600 rounded-2xl"><i class="fa-solid fa-snowflake text-2xl"></i></span>
+                        <div>
+                            <h2 class="text-3xl font-black text-slate-900">제재 정리: 「탑차를 끄는 사계절의 산타」</h2>
+                            <span class="text-base text-slate-500 font-bold">글쓴이: 지원 (지은이가 아빠의 일상을 지켜보며 쓴 수필)</span>
+                        </div>
+                    </div>
+                    <span class="bg-rose-100 text-rose-800 text-sm font-black px-4 py-2 rounded-full"><i class="fa-solid fa-star mr-1"></i>교과서 주요 제재</span>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <h3 class="text-xl font-black text-slate-900 mb-5 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            제재 요약 정리
+                        </h3>
+                        <div class="grid grid-cols-1 gap-4 text-base md:text-lg">
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-2">
+                                <span class="w-24 font-black text-indigo-600 shrink-0"><i class="fa-solid fa-circle-chevron-right text-xs mr-1"></i>갈래</span>
+                                <span class="text-slate-800">일정한 형식을 따르지 않고 일상 체험을 자유롭게 쓴 <strong class="font-black text-slate-900">수필(경수필)임</strong>.</span>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-2">
+                                <span class="w-24 font-black text-indigo-600 shrink-0"><i class="fa-solid fa-circle-chevron-right text-xs mr-1"></i>성격</span>
+                                <span class="text-slate-800">글쓴이의 경험에 따른 감동을 솔직하게 기록한 <strong class="font-black text-slate-900">진솔적</strong>이며, 아빠를 빗댄 <strong class="font-black text-slate-900">비유적, 성찰적임</strong>.</span>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-2">
+                                <span class="w-24 font-black text-indigo-600 shrink-0"><i class="fa-solid fa-circle-chevron-right text-xs mr-1"></i>제재</span>
+                                <span class="text-slate-800">어느 초여름 비 내리는 날, <strong class="font-black text-slate-900">아빠의 택배 배달 업무를 직접 도왔던 경험임</strong>.</span>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-2">
+                                <span class="w-24 font-black text-indigo-600 shrink-0"><i class="fa-solid fa-circle-chevron-right text-xs mr-1"></i>주제</span>
+                                <span class="text-slate-800">아빠가 수행하는 택배 노동의 참된 가치 발견 및 <strong class="font-black text-slate-900">아빠를 향한 애틋한 사랑과 존경심임</strong>.</span>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-2">
+                                <span class="w-24 font-black text-indigo-600 shrink-0"><i class="fa-solid fa-circle-chevron-right text-xs mr-1"></i>특징</span>
+                                <ul class="list-disc list-inside space-y-1 text-slate-800 pl-1">
+                                    <li>대상의 업무적 탁월함을 <strong class="font-black text-slate-900">컴퓨터 프로그램</strong> 등 비유적 어휘로 구체화함.</li>
+                                    <li>글쓴이의 정서적 성장이 <strong class="font-black text-slate-900">안타까움에서 경이로움과 존경함</strong>으로 진솔하게 전개됨.</li>
+                                    <li>대화 내용을 실감 나게 <strong class="font-black text-slate-900">직접 인용</strong>하여 현장의 생동감을 부여함.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <h3 class="text-xl font-black text-slate-900 mb-4 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            비유적 표현 (제목 분석)
+                        </h3>
+                        <p class="text-base text-slate-800 mb-5 leading-relaxed font-medium">
+                            글쓴이는 택배 기사로 성실히 근무하시는 아빠를 <strong class="text-rose-600 font-black">‘산타’</strong>에 비유하여 표현함.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-400 font-bold block">원관념 (원래 표현하려던 대상)</span>
+                                    <span class="text-xl font-black text-slate-800">택배원인 아빠</span>
+                                </div>
+                                <span class="text-slate-200 text-3xl font-black"><i class="fa-solid fa-truck-ramp-box"></i></span>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-400 font-bold block">보조관념 (빗대어 표현하는 매개체)</span>
+                                    <span class="text-xl font-black text-rose-600">사계절의 산타</span>
+                                </div>
+                                <span class="text-rose-200 text-3xl font-black"><i class="fa-solid fa-gift"></i></span>
+                            </div>
+                        </div>
+                        <div class="mt-5 p-4 bg-rose-50 rounded-xl border border-rose-100 text-sm text-rose-900 leading-relaxed font-bold">
+                            <strong><i class="fa-solid fa-circle-info mr-1"></i>비유의 표현 효과:</strong>
+                            아빠를 사람들에게 선물을 나누어 주는 산타에 빗대어 표현함으로써, 매일 고생하는 아빠의 직업을 단순한 노동이 아니라 <strong class="font-extrabold text-rose-700">'사람들에게 기쁨과 설렘을 선물해 주는 보람찬 일'</strong>로 재평가하고 고마움을 <strong class="font-extrabold text-rose-700">전달함</strong>.
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <h3 class="text-xl font-black text-slate-900 mb-5 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
+                            글에 담긴 진솔한 표현과 마음의 변화
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded font-black">장면 1 (안타까움)</span>
+                                <blockquote class="text-base font-bold text-slate-700 italic my-3">
+                                    "까칠하고 물기 하나 없는 그 하루를 살피고 있으면 괜히 살이 베일 것만 같은 느낌이 들었다." / "아빠의 뒷모습을 지켜보고 있자니 정말 속상했다."
+                                </blockquote>
+                                <div class="text-sm text-indigo-600 mt-2 font-bold">
+                                    <i class="fa-solid fa-heart mr-1"></i> <strong>글쓴이의 마음:</strong> 매일 거친 환경에서 고단하게 배달 업무를 수행하는 아빠를 향한 <strong>안타까움과 애틋함이 묻어남</strong>.
+                                </div>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded font-black">장면 2 (경이로움과 존경)</span>
+                                <blockquote class="text-base font-bold text-slate-700 italic my-3">
+                                    "아빠의 몸 어딘가에 택배와 관련된 엄청난 용량의 컴퓨터 프로그램이 있는 것 같았다." / "나는 경이로운 눈빛으로 아빠를 바라보며 물었다."
+                                </blockquote>
+                                <div class="text-sm text-indigo-600 mt-2 font-bold">
+                                    <i class="fa-solid fa-heart mr-1"></i> <strong>글쓴이의 마음:</strong> 운송장 정보 및 물건 상태를 한눈에 척척 식별하고 능숙하게 소화하는 아빠에 대한 <strong>경이로움과 깊은 존경이 표현됨</strong>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 2. 어휘 정리 탭 ==================== -->
+        <div id="section-vocab" class="hidden space-y-8 animate-fade-in">
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <span class="text-indigo-600 font-black text-sm uppercase tracking-wider bg-indigo-50 px-4 py-2 rounded-full">교과서 핵심 단어</span>
+                    <h2 class="text-4xl font-black text-slate-900 mt-4 mb-4">단원 기본 어휘 20선 학습 카드</h2>
+                    <p class="text-slate-500 text-base font-bold">
+                        교과서 및 활동지에 자주 나오는 핵심 어휘 20개입니다. 카드를 <strong>클릭(터치)</strong>하여 뒤집으면 자세한 사전적 정의와 예문을 재미있게 익힐 수 있습니다.
+                    </p>
+                </div>
+                <div id="flashcards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 자바스크립트에서 20개의 카드를 생성합니다. -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 3. 형성 평가 탭 ==================== -->
+        <div id="section-quiz" class="hidden space-y-10 animate-fade-in">
+            
+            <!-- 인적 사항 입력 섹션 (시험 전 필수) -->
+            <div id="quiz-auth-card" class="bg-white rounded-3xl p-8 md:p-12 shadow-xl max-w-xl mx-auto border-t-8 border-indigo-600 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-50 rounded-full -z-10"></div>
+                <div class="text-center mb-10">
+                    <span class="p-4 bg-indigo-50 text-indigo-600 rounded-full inline-block mb-4"><i class="fa-solid fa-id-card text-3xl"></i></span>
+                    <h2 class="text-3xl font-black text-slate-900">형성 평가 응시자 정보</h2>
+                    <p class="text-slate-500 text-base mt-2 font-bold">정확한 채점과 실시간 결과 분석을 위해 인적 사항을 작성해 주세요.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-black text-slate-500 mb-2">학년 <span class="text-rose-500">*</span></label>
+                            <select id="user-grade" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-base font-bold focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                                <option value="1">1 학년</option>
+                                <option value="2">2 학년</option>
+                                <option value="3">3 학년</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-black text-slate-500 mb-2">반 <span class="text-rose-500">*</span></label>
+                            <input type="number" id="user-class" min="1" max="20" placeholder="1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-base font-bold focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-center">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-black text-slate-500 mb-2">번호 <span class="text-rose-500">*</span></label>
+                            <input type="number" id="user-number" min="1" max="40" placeholder="12" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-base font-bold focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-center">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-black text-slate-500 mb-2">학생 이름 <span class="text-rose-500">*</span></label>
+                        <input type="text" id="user-name" placeholder="홍길동" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-base font-bold focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                    </div>
+                    <button onclick="startQuiz()" class="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-lg py-4 rounded-xl shadow-lg shadow-indigo-600/20 transition duration-300 flex items-center justify-center gap-2">
+                        <span>시험지 배부 받기</span>
+                        <i class="fa-solid fa-arrow-right-long text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 형성 평가 시험지 본문 -->
+            <div id="quiz-sheet" class="hidden space-y-10">
+                <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-3 h-3 rounded-full bg-indigo-500 animate-ping"></span>
+                        <span class="text-base text-indigo-900 font-black" id="info-badge">수험생: 1학년 1반 1번 홍길동</span>
+                    </div>
+                    <button onclick="resetUserInfo()" class="text-sm text-indigo-600 hover:text-indigo-800 font-extrabold flex items-center gap-1">
+                        <i class="fa-solid fa-user-pen"></i> 인적 사항 변경하기
+                    </button>
+                </div>
+
+                <!-- 10개 문제 컨테이너 (실시간 채점 및 피드백) -->
+                <div class="space-y-8">
+
+                    <!-- Q1 -->
+                    <div id="q1-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q1</span>
+                            <span class="text-sm text-slate-500 font-black">[OX 퀴즈]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">정서를 표현하는 글을 쓰는 과정에서 글쓴이는 자신을 성찰하고, 건강한 자아를 형성할 수 있다.</p>
+                        <div class="grid grid-cols-2 gap-5">
+                            <button type="button" onclick="handleOX(1, 'O')" id="btn-q1-O" class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1">
+                                <span class="text-3xl text-blue-600 font-black">O</span>
+                                <span class="text-xs text-slate-500 font-bold">그렇다 (맞음)</span>
+                            </button>
+                            <button type="button" onclick="handleOX(1, 'X')" id="btn-q1-X" class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1">
+                                <span class="text-3xl text-rose-600 font-black">X</span>
+                                <span class="text-xs text-slate-500 font-bold">아니다 (틀림)</span>
+                            </button>
+                        </div>
+                        <div id="feedback-q1" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div id="q2-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q2</span>
+                            <span class="text-sm text-slate-500 font-black">[OX 퀴즈]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">정서를 표현하는 글을 쓸 때, 독자에게 명확한 정보 전달을 해야 하므로 자신이 주관적으로 느꼈던 감정은 서술에서 배제해야 한다.</p>
+                        <div class="grid grid-cols-2 gap-5">
+                            <button type="button" onclick="handleOX(2, 'O')" id="btn-q2-O" class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1">
+                                <span class="text-3xl text-blue-600 font-black">O</span>
+                                <span class="text-xs text-slate-500 font-bold">그렇다 (맞음)</span>
+                            </button>
+                            <button type="button" onclick="handleOX(2, 'X')" id="btn-q2-X" class="py-4 border-2 border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1">
+                                <span class="text-3xl text-rose-600 font-black">X</span>
+                                <span class="text-xs text-slate-500 font-bold">아니다 (틀림)</span>
+                            </button>
+                        </div>
+                        <div id="feedback-q2" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q3 (단답형 - 실시간 채점 지원) -->
+                    <div id="q3-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q3</span>
+                            <span class="text-sm text-slate-500 font-black">[단답형 주관식]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-4">
+                            자신이 쓴 글을 마지막으로 꼼꼼히 다시 읽어 보며 어휘, 문장의 흐름, 흐트러진 표현을 수정하고 보완해 나가는 쓰기 단계를 무엇이라고 합니까?
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="input-q3" onkeypress="handleInputKey(event, 3)" placeholder="답안을 입력해 주세요" class="flex-1 w-full bg-slate-50 border border-slate-200 focus:bg-white rounded-xl px-5 py-4 text-base font-bold focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <button type="button" id="btn-q3" onclick="handleShort(3)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-4 rounded-xl transition whitespace-nowrap">채점하기</button>
+                        </div>
+                        <div id="feedback-q3" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q4 (단답형 - 실시간 채점 지원) -->
+                    <div id="q4-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q4</span>
+                            <span class="text-sm text-slate-500 font-black">[단답형 주관식]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-4">
+                            수필 「탑차를 끄는 사계절의 산타」의 제목에는 비유적 표현이 적용되어 있습니다. 여기서 보조관념인 '사계절의 산타'가 빗대고 있는 본래의 대상(<strong class="text-indigo-600">원관념</strong>)은 누구인지 한 단어로 쓰시오.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="input-q4" onkeypress="handleInputKey(event, 4)" placeholder="답안을 입력해 주세요" class="flex-1 w-full bg-slate-50 border border-slate-200 focus:bg-white rounded-xl px-5 py-4 text-base font-bold focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <button type="button" id="btn-q4" onclick="handleShort(4)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-4 rounded-xl transition whitespace-nowrap">채점하기</button>
+                        </div>
+                        <div id="feedback-q4" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q5 (5지선다) -->
+                    <div id="q5-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q5</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">다음 중 정서를 표현하는 글의 특징이나 종류에 해당하지 <strong class="text-rose-500">않는</strong> 것은?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q5" value="1" onclick="handleMCQ(5, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 글쓴이가 삶 속에서 겪은 실제 경험을 바탕으로 쓴다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q5" value="2" onclick="handleMCQ(5, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 경험을 속임 없이 솔직하게 담아냄으로써 독자의 마음에 공감을 자아낸다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q5" value="3" onclick="handleMCQ(5, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 글쓴이 본인의 내면 성찰뿐 아니라 타인에게 큰 감동을 주는 가치를 지닌다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q5" value="4" onclick="handleMCQ(5, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 현상에 대한 철저한 객관적 지표를 활용하여 독자를 논리적으로 강하게 설득하는 보고문이다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q5" value="5" onclick="handleMCQ(5, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 인생의 큰 자취를 돌아보며 주관적 감회와 정서를 성찰적으로 기록하는 자서전이나 수필이 대표적이다.</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q5" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q6 (5지선다) -->
+                    <div id="q6-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q6</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">정서를 표현하는 글을 쓰기 위해 떠올린 글감(소재) 중 성격이 가장 적절하지 <strong class="text-rose-500">않은</strong> 것은?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q6" value="1" onclick="handleMCQ(6, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 단짝 친구와 아주 사소한 오해 때문에 다투고 서로 멀어졌을 때의 서운함</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q6" value="2" onclick="handleMCQ(6, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 물놀이 및 계곡 수영장 안전사고를 방지하기 위해 지켜야 할 10가지 규칙</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q6" value="3" onclick="handleMCQ(6, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 처음 가본 비행기 여행길에서 맛본 비행의 설렘과 이색적인 풍경의 경이로움</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q6" value="4" onclick="handleMCQ(6, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 친구들에게 지지를 얻어 떨리는 마음으로 학급 회장에 당선되어 책임감을 느끼기 시작한 일</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q6" value="5" onclick="handleMCQ(6, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 내가 힘든 시기에 가족들이 몰래 촛불을 켜며 준비해 주었던 생일 파티의 고마움</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q6" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- 공통 지문 수록 박스 (7번 문항 전으로 위치 이동) -->
+                    <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-8 md:p-10 shadow-inner my-12">
+                        <span class="text-sm bg-amber-100 text-amber-800 font-black px-3 py-1.5 rounded-md inline-block mb-4">공통 지문 [문제 7 - 9]</span>
+                        <h3 class="text-xl font-black text-slate-900 mb-5">[7~9] 다음을 읽고 물음에 답하시오.</h3>
+                        <div class="space-y-5 text-slate-700 text-base md:text-lg leading-relaxed bg-white/60 p-6 rounded-xl border border-white max-h-96 overflow-y-auto">
+                            <p>
+                                아빠의 하루를 돕는 내 손은 항상 더러웠다. 까칠하고 물기 하나 없는 그 하루를 살피고 있으면 괜히 살이 베일 것만 같은 느낌이 들었다.<br>
+                                “오늘은 몇 개나 되냐?”<br>
+                                “글쎄, 200개 정도?”<br>
+                                “그렇게 많아?”<br>
+                                “응, 엄청 많아.”<br>
+                                나는 아빠의 뒷모습을 지켜보고 있자니 정말 속상했다.
+                            </p>
+                            <p class="border-t border-slate-200/50 my-4"></p>
+                            <p>
+                                아빠는 탑차 뒷문을 활짝 열었다. 빼곡하게 쌓여 있는 택배 상자들이 보였다. (...) 아빠가 운송장을 들여다보지도 않고 바닥에 늘어선 택배 상자 몇 개를 척척 들어 올렸다. 내 눈에는 다 비슷해 보이는데 아빠는 손쉽게 구분해 냈다. 아빠의 몸 어딘가에 택배와 관련된 엄청난 용량의 컴퓨터 프로그램이 있는 것 같았다. 나는 경이로운 눈빛으로 아빠를 바라보며 물었다.<br>
+                                “아빠, 그걸 어떻게 다 외워?”<br>
+                                “외우는 게 아니야. 일을 하다 보면 그냥 머릿속에 기억이 남는 거지. 이 많은 물건 중에는 오늘 꼭 배달받아야 하는 것들이 많아. 병원에 갈 시간이 없어서 집에서 약을 타 먹는 할아버지의 약 상자도 있고, 멀리 사는 자식이 보낸 반찬도 있고, 생일 선물도 있어. 그러니까 아빠는 늘 소중한 마음을 배달하고 있는 거야. 그런 소중한 물건을 아빠 손으로 전해 줄 수 있으니 참 보람찬 일이지.”
+                            </p>
+                            <p class="border-t border-slate-200/50 my-4"></p>
+                            <p>
+                                아빠가 손가락을 접어가며 배달해야 할 집들의 특징을 말해 주었다. 진짜 산타와 다른 점이 있다면 아빠는 언제나 사람들과 연결되어 있다는 것이다. 아빠는 그들의 집 앞에 도착해 꼭 전화를 하고, 이렇게 말한다.<br>
+                                “집에 아무도 안 계신데, 물건은 누가 가져가지 않게 잘 넣어 놓을게요.”<br>
+                                그렇게 아빠는 오늘도 누군가의 산타가 되었다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Q7 (5지선다) -->
+                    <div id="q7-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q7</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">위 지문의 전반부에서, 글쓴이가 '아빠의 뒷모습을 지켜보고 있자니 정말 속상했다.'라고 밝힌 이유로 가장 적합한 심리는 무엇입니까?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q7" value="1" onclick="handleMCQ(7, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 매일 비가 오거나 궂은 날씨에도 엄청난 양의 육체적 배달 노동을 감당해야 하는 아빠를 향한 속상함과 애틋함</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q7" value="2" onclick="handleMCQ(7, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 택배 물건들이 종종 외부 비바람 때문에 젖는 것에 대해 손해를 보지 않을까 하는 불안감</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q7" value="3" onclick="handleMCQ(7, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 자신은 몸이 왜소하여 탑차에 있는 큰 박스들을 번쩍 들어 도울 수 없다는 스스로에 대한 자괴감</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q7" value="4" onclick="handleMCQ(7, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 평소 바쁘다는 핑계로 가사 노동이나 아빠의 운전 일을 전혀 이해하려 하지 않고 살아온 데서 오는 이기적 미안함</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q7" value="5" onclick="handleMCQ(7, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 자신의 용돈을 더 많이 달라고 부탁했는데, 아빠가 하루에 배달하는 물량이 너무 적어 불평하고 싶어진 원망</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q7" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q8 (5지선다) -->
+                    <div id="q8-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q8</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">위 지문 중 "아빠의 몸 어딘가에 택배와 관련된 엄청난 용량의 컴퓨터 프로그램이 있는 것 같았다."라는 표현 방식과 효과를 바르게 분석한 것은?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q8" value="1" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 의인법: 사물에 인격을 부여하여 독자에게 친밀한 상상을 느끼게 만든다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q8" value="2" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 대구법: 대등한 구조의 문장을 반복하여 전통적 운율과 가독성을 자극한다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q8" value="3" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 비유법: 능숙하게 모든 택배의 위치와 배달 주소를 암기하는 아빠의 프로 정신을 ‘컴퓨터 프로그램’에 빗대어 경이로움과 존경을 효과적으로 드러낸다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q8" value="4" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 반어법: 아빠가 실제 일처리를 너무 느리게 하는 것을 반대로 표현하여 골리는 재미를 준다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q8" value="5" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 설의법: 누구나 당연히 알고 있는 사실을 질문 형식으로 유도하여 결론을 강하게 설득한다.</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q8" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q9 (기존 10번 위치 스왑) -->
+                    <div id="q9-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q9</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">위 글에서 아빠가 스스로에 대해 "소중한 마음을 배달하고 있는 산타"라고 느낀 근원적인 이유로 올바른 것은 무엇입니까?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q9" value="1" onclick="handleMCQ(9, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 회사 유니폼이나 안전복이 붉은색에 가깝기 때문</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q9" value="2" onclick="handleMCQ(9, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 택배 상자 안에 든 것들이 단순한 물건을 넘어, 누군가의 '약, 반찬, 생일 선물' 같이 서로를 아끼는 소중한 마음들이 담겨있음을 깨달았기 때문</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q9" value="3" onclick="handleMCQ(9, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 항상 썰매 형태의 미끄럼틀을 타고 하차 작업을 전개하기 때문</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q9" value="4" onclick="handleMCQ(9, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 주로 밤사이에 아무도 보지 못하게 새벽에만 조용히 배송 업무를 처리하고 사라지기 때문</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q9" value="5" onclick="handleMCQ(9, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 배송할 물건이 많은 지역의 어린이들에게 몰래 과자 선물을 부착해 주었기 때문</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q9" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                    <!-- Q10 (기존 9번 위치 스왑) -->
+                    <div id="q10-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q10</span>
+                            <span class="text-sm text-slate-500 font-black">[5지선다형]</span>
+                        </div>
+                        <p class="font-extrabold text-slate-900 text-lg md:text-xl mb-5">정서를 표현하는 글 쓰기 단계 중 '내용 생성하기'에서 행하는 올바른 활동에 해당하는 설명은?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q10" value="1" onclick="handleMCQ(10, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>① 글의 주제에 적합하게 전체 구조를 '처음-중간-끝'으로 나누어 글의 개요(뼈대)를 구성한다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q10" value="2" onclick="handleMCQ(10, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>② 무엇을 목적으로 글을 쓸지 결정하고, 떠올린 무수한 아이디어 중 적절한 하나의 글감을 선택한다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q10" value="3" onclick="handleMCQ(10, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>③ 마음에 둔 핵심 글감에 관한 인상 깊었던 구체적인 장면에 대한 기억, 당시에 들었던 생각이나 감정을 자유롭게 떠올리며 쓸거리를 늘린다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q10" value="4" onclick="handleMCQ(10, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>④ 오탈자나 단어 표기법의 오류가 없는지 꼼꼼히 문단 단위를 살피고 고쳐 나간다.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
+                                <input type="radio" name="q10" value="5" onclick="handleMCQ(10, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
+                                <span>⑤ 직유, 은유법과 생생한 대화 장면 따위를 조합하여 실제로 글로 풀어내는 글을 문장화하는 행동을 개시한다.</span>
+                            </label>
+                        </div>
+                        <div id="feedback-q10" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
+                    </div>
+
+                </div>
+
+                <!-- 전체 성적 결과 보드 (10문항 완료 시 자동 노출) -->
+                <div id="quiz-result" class="hidden bg-white border-2 border-indigo-600 rounded-3xl p-8 md:p-10 shadow-xl mt-12 animate-fade-in">
+                    <div class="text-center pb-6 border-b border-slate-100">
+                        <span class="text-sm font-black text-indigo-600 bg-indigo-50 px-4 py-2 rounded-full uppercase">평가 결과 리포트</span>
+                        <h3 class="text-3xl font-black text-slate-900 mt-5">수고하셨습니다! 모든 문항 채점이 완료되었습니다.</h3>
+                        <div class="my-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <div class="bg-indigo-50 p-6 rounded-2xl w-full sm:w-auto">
+                                <span class="text-sm text-slate-500 font-bold block mb-2">최종 나의 점수</span>
+                                <span class="text-5xl font-black text-indigo-600" id="result-score">0 / 100</span>
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-2xl w-full sm:w-auto">
+                                <span class="text-sm text-slate-500 font-bold block mb-2">종합 판정</span>
+                                <span class="text-2xl font-black" id="result-grade">-</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 font-bold" id="result-meta"></p>
+                    </div>
+
+                    <!-- 상세 분석 내역 -->
+                    <div class="mt-8">
+                        <h4 class="font-extrabold text-slate-900 text-xl mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-indigo-600"></i> 문항별 상세 기록
+                        </h4>
+                        <div id="quiz-breakdown" class="space-y-4">
+                            <!-- 문항 분석 데이터 자동 렌더링 -->
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-10">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-black px-8 py-4 rounded-xl text-base transition flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-rotate-left"></i> 오답 지우고 다시 풀기
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-16 border-t border-slate-800 text-center text-sm space-y-2 font-semibold">
+        <p class="font-black text-slate-300 text-base">정서를 표현하는 글 쓰기 (비상교육 박현숙 교과서 중학 국어 1-2 기준)</p>
+        <p>개념 학습 ∙ 플래시 카드 어휘 암기 ∙ 형성 평가 실시간 채점 시스템</p>
+        <p class="text-slate-500">© 2026 Interactive Hangul Study System. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 자바스크립트 로직 -->
+    <script>
+        // ==================== [커스텀 알림 처리 로직] ====================
+        function showAlert(msg) {
+            document.getElementById('custom-alert-message').textContent = msg;
+            document.getElementById('custom-alert').classList.remove('hidden');
+        }
+
+        function closeAlert() {
+            document.getElementById('custom-alert').classList.add('hidden');
+        }
+
+        // ==================== [탭 전환 로직] ====================
+        function changeTab(tabId) {
+            document.getElementById('section-concept').classList.add('hidden');
+            document.getElementById('section-vocab').classList.add('hidden');
+            document.getElementById('section-quiz').classList.add('hidden');
+
+            const tabs = ['concept', 'vocab', 'quiz'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                btn.className = "px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 text-indigo-100 hover:text-white";
+            });
+
+            document.getElementById(`section-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.className = "px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 bg-white text-indigo-700 shadow";
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        // ==================== [2. 어휘 카드 20개 정의 및 생성] ====================
+        const vocabItems = [
+            { word: "공감(共感)하다", meaning: "남의 감정, 의견, 주장 등에 대하여 자기도 그렇다고 느끼다.", example: "엄마는 내 말에 공감하지 않는 듯 고개를 가로저었다." },
+            { word: "정서(情緒)", meaning: "사람의 마음에 일어나는 여러 가지 감정. 또는 감정을 불러일으키는 기분이나 분위기.", example: "이 노래에는 고향에 대한 그리움의 정서가 아주 듬뿍 담겨 있다." },
+            { word: "진솔(眞率)하다", meaning: "진실하고 솔직하다.", example: "우리는 모닥불 앞에 모여 앉아 서로의 마음속 진솔한 대화를 깊게 나누었다." },
+            { word: "가물가물하다", meaning: "의식이나 기억이 조금 희미해져서 정신이 있는 둥 없는 둥 흐릿하다.", example: "우리는 가물가물한 옛 기억을 조심스레 더듬어 시골 친구의 시골집을 찾아갔다." },
+            { word: "각별(각別)하다", meaning: "어떤 일에 대한 마음가짐이나 자세 등이 유달리 특별하다.", example: "자식에 관한 부모의 애정과 관심은 늘 언제나 각별하다." },
+            { word: "개요(概要)", meaning: "간결하게 추려 낸 주요 내용.", example: "뉴스에서는 오늘 발생한 갑작스러운 사고의 개요를 알기 쉽게 설명해 주었다." },
+            { word: "용량(容量)", meaning: "저장하거나 담을 수 있는 정보나 물량의 크기 또는 한계량.", example: "이 컴퓨터는 엄청난 용량의 정보 보존을 지원하는 최신 하드웨어다." },
+            { word: "경이(驚異)롭다", meaning: "놀랍고 신기한 데가 있다.", example: "자연의 순수함을 간직한 오로라 풍경은 누구에게나 참으로 경이롭게 다가온다." },
+            { word: "소중하다", meaning: "매우 귀중하다.", example: "가족이 모여 함께 식사하는 일상은 나에게 가장 소중하고 따뜻한 순간이다." },
+            { word: "글감", meaning: "글의 내용이나 뼈대를 이루는 필수적인 재료.", example: "수필 글쓰기를 시작하기에 앞서 나만의 깊은 감정이 깃든 완벽한 글감을 찾아냈다." },
+            { word: "딸리다", meaning: "어떤 것에 매이거나 붙어 있다.", example: "새로 이사 간 집에는 아담하고 예쁜 작은 정원이 딸려 있다." },
+            { word: "수필(隨筆)", meaning: "일정한 형식을 따르지 않고 인생이나 일상생활에서의 느낌이나 체험을 생각나는 대로 쓴 산문.", example: "그는 소박한 자연에서의 삶을 소재로 한 편의 잔잔한 수필을 썼다." },
+            { word: "잦아들다", meaning: "거칠거나 들뜬 기운이 가라앉아 잠잠해져 가다.", example: "밤이 깊어지자 거세게 몰아치던 비바람 소리도 차츰 잦아들었다." },
+            { word: "초조(焦燥)하다", meaning: "애가 타서 마음이 조마조마하다.", example: "합격자 발표 시간이 다가올수록 초조한 마음을 감출 길이 없었다." },
+            { word: "인용(引用)", meaning: "남의 말이나 글을 자신의 글이나 말 속에 끌어다 씀.", example: "그는 유명한 학자의 명언을 인용하여 자신의 주장을 논리적으로 뒷받침했다." },
+            { word: "운송장(運送狀)", meaning: "짐을 실어 보낼 때 그 내용을 적어 보내는 문서.", example: "택배 기사님은 상자에 붙은 운송장 번호와 주소를 꼼꼼히 확인하셨다." },
+            { word: "강화(強化)하다", meaning: "세력이나 힘을 더 강하고 튼튼하게 하다.", example: "환절기를 맞아 기초 체력을 강화하기 위해 매일 걷기 운동을 시작했다." },
+            { word: "묘사(描寫)", meaning: "어떤 대상이나 사물, 현상 따위를 언어로 서술하여 그림을 그리듯 생생하게 표현함.", example: "그 소설은 주인공의 미세한 표정 변화까지 섬세하게 묘사하고 있다." },
+            { word: "개성(個性)", meaning: "다른 사람이나 개체와 구별되는 고유의 특성.", example: "우리 반 친구들은 저마다 뚜렷한 개성을 지니고 있어 단합할 때 즐겁다." },
+            { word: "포착(捕捉)하다", meaning: "어떤 기회나 정세를 알아차리다. 또는 요점을 꼭 집어내다.", example: "노련한 사진작가는 새가 날아오르는 결정적인 순간을 완벽하게 포착했다." }
+        ];
+
+        function renderVocabCards() {
+            const container = document.getElementById('flashcards-grid');
+            container.innerHTML = "";
+            vocabItems.forEach((vocab, i) => {
+                const card = document.createElement('div');
+                card.className = "perspective-1000 h-80 cursor-pointer";
+                card.onclick = () => card.firstElementChild.classList.toggle('[transform:rotateY(180deg)]');
+                
+                card.innerHTML = `
+                    <div class="w-full h-full transform-style-3d transition-transform duration-500 relative flex items-center justify-center">
+                        <div class="absolute w-full h-full backface-hidden bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+                            <span class="text-sm font-black text-slate-400 flex items-center gap-1">
+                                <i class="fa-solid fa-id-badge text-indigo-400"></i> 어휘 ${String(i+1).padStart(2, '0')}
+                            </span>
+                            <div class="text-center my-auto">
+                                <h3 class="text-4xl md:text-5xl font-extrabold text-indigo-900 tracking-tight leading-tight">${vocab.word}</h3>
+                            </div>
+                            <span class="text-xs md:text-sm text-indigo-600 bg-indigo-50 font-black py-1.5 px-4 rounded-full text-center mx-auto flex items-center gap-1">
+                                <i class="fa-solid fa-retweet"></i> 터치하여 뒤집기
+                            </span>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-indigo-950 text-white rounded-2xl p-6 flex flex-col justify-between shadow-md border-2 border-indigo-500">
+                            <div>
+                                <span class="text-xs md:text-sm text-yellow-300 font-extrabold uppercase tracking-wider block mb-2">사전적 의미</span>
+                                <p class="text-base md:text-lg text-slate-100 font-bold leading-relaxed">${vocab.meaning}</p>
+                            </div>
+                            <div class="border-t border-indigo-900/60 pt-4">
+                                <span class="text-xs md:text-sm text-teal-300 font-extrabold uppercase tracking-wider block mb-2">실전 문맥 예문</span>
+                                <p class="text-sm md:text-base text-slate-300 italic font-medium leading-relaxed">"${vocab.example}"</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        renderVocabCards();
+
+
+        // ==================== [3. 형성 평가 실시간 채점 로직] ====================
+        let currentUser = null;
+        let answeredState = {}; // 각 문항별 응답 상태 (중복 채점 방지)
+        let totalScore = 0;
+
+        // 정답 정렬 및 해설지 매핑 (9, 10번 스왑 반영됨)
+        const quizSolutions = {
+            q1: { ans: "O", desc: "정서를 표현하는 글(예: 수필 등)을 쓰는 과정에서 자신의 지난 삶과 경험을 깊이 있게 <strong>성찰</strong>하며 자아성장을 견인할 수 있습니다. 지문에서도 이를 올바른 사실로 밝히고 있습니다." },
+            q2: { ans: "X", desc: "정서를 표현하는 글의 핵심 가치는 정보의 객관성 유지가 아니라, 주관적으로 느꼈던 내면의 감동이나 <strong>정서를 진솔하게 독자에게 표현</strong>하여 공감을 유도하는 데 있습니다." },
+            q3: { ans: "고쳐쓰기", desc: "글을 모두 다 완수하여 한 차례 완성한 뒤, 처음부터 다시 정비하며 부적절한 단어나 문장 및 구조를 다듬는 글쓰기의 최종 과정 명칭은 <strong>'고쳐쓰기'</strong>(혹은 고쳐 쓰기)입니다." },
+            q4: { ans: "아빠", desc: "작품 「탑차를 끄는 사계절의 산타」에서 산타라는 보조관념이 원래 빗대고 있는 실제 인물(원관념)은 작가 지원이의 <strong>'아빠'</strong>(혹은 아버지)입니다." },
+            q5: { ans: "4", desc: "독자를 강하게 설득하거나 사실을 건조하게 알리는 보고문은 주관적 정서 표현을 핵심 목적으로 삼는 문학과 거리가 멉니다." },
+            q6: { ans: "2", desc: "계곡 및 안전 수칙을 명확하게 짚어 알리는 객관적 매뉴얼이나 안내 지침은 설명 중심의 실용문이지, 자신의 고유한 감흥과 깨달음을 드러내는 정서적 글감으로 가장 적절하지 못합니다." },
+            q7: { ans: "1", desc: "비가 세차게 퍼붓는 날씨에도 아랑곳하지 않고 지치지 않고 끊임없이 물량을 운송 및 배송하는 모습을 보며 자식으로서 느끼는 <strong>애틋함과 가슴 아린 감정</strong>이 '속상했다'라는 어구에 함축되어 있습니다." },
+            q8: { ans: "3", desc: "모든 택배 상자의 주소와 배달 위치를 귀신같이 머리에 꿰뚫어 두고 기억하는 아빠의 숙련도를 컴퓨터의 '프로그램'에 빗대어 찬사를 보낸 <strong>비유법(직유 혹은 은유)</strong>에 해당합니다." },
+            q9: { ans: "2", desc: "아빠는 소박한 마음이 고스란히 담긴 물품들(약 상자, 부모의 반찬, 생일 선물)을 책임감 있게 사람들의 현관 앞까지 정성스레 수송해 주기에, 단순 배달원이 아닌 <strong>'마음을 가치 있게 배송해 주는 사계절의 산타'</strong>로서의 보람과 책임감을 가집니다." },
+            q10: { ans: "3", desc: "내용 생성하기는 '글을 어떻게 쓸지 글감과 관련된 유용한 정보, 당시의 기억과 세부 에피소드를 최대한 많이 발굴하는 생성 단계'입니다. ①은 내용 조직, ②는 계획하기, ④는 고쳐쓰기 단계에 해당합니다." }
+        };
+
+        function startQuiz() {
+            const grade = document.getElementById('user-grade').value;
+            const classVal = document.getElementById('user-class').value;
+            const numVal = document.getElementById('user-number').value;
+            const nameVal = document.getElementById('user-name').value.trim();
+
+            if (!classVal || !numVal || !nameVal) {
+                showAlert("학년, 반, 번호, 이름을 모두 누락 없이 작성해 주셔야 평가를 시작할 수 있습니다.");
+                return;
+            }
+
+            currentUser = { grade, classVal, numVal, name: nameVal };
+            document.getElementById('info-badge').innerHTML = `<i class="fa-solid fa-address-card mr-1"></i> 수험생 정보: <strong>${grade}학년 ${classVal}반 ${numVal}번 ${nameVal}</strong> 학생 응시 중`;
+            document.getElementById('quiz-auth-card').classList.add('hidden');
+            document.getElementById('quiz-sheet').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetUserInfo() {
+            showAlert("응시자 정보 수정을 시작합니다. 현재 마크된 답안은 보존됩니다.");
+            document.getElementById('quiz-auth-card').classList.remove('hidden');
+            document.getElementById('quiz-sheet').classList.add('hidden');
+        }
+
+        // 실시간 채점 - OX 클릭 시
+        function handleOX(qNum, ans) {
+            if (answeredState[qNum]) return; // 이미 풀었다면 무시
+            
+            const oBtn = document.getElementById(`btn-q${qNum}-O`);
+            const xBtn = document.getElementById(`btn-q${qNum}-X`);
+            
+            if (ans === 'O') {
+                oBtn.className = "py-4 border-2 border-indigo-500 bg-indigo-50/50 rounded-xl font-bold transition flex flex-col items-center justify-center gap-1 shadow-inner";
+            } else {
+                xBtn.className = "py-4 border-2 border-indigo-500 bg-indigo-50/50 rounded-xl font-bold transition flex flex-col items-center justify-center gap-1 shadow-inner";
+            }
+            
+            oBtn.disabled = true;
+            xBtn.disabled = true;
+            processGrading(qNum, ans);
+        }
+
+        // 실시간 채점 - 주관식 단답형 엔터키 감지
+        function handleInputKey(e, qNum) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleShort(qNum);
+            }
+        }
+
+        // 실시간 채점 - 주관식 단답형 버튼 클릭 시
+        function handleShort(qNum) {
+            if (answeredState[qNum]) return;
+            
+            const inputEl = document.getElementById(`input-q${qNum}`);
+            const val = inputEl.value.trim();
+            if (!val) {
+                showAlert("답안을 입력해 주세요.");
+                return;
+            }
+            
+            inputEl.disabled = true;
+            document.getElementById(`btn-q${qNum}`).disabled = true;
+            document.getElementById(`btn-q${qNum}`).classList.replace('bg-indigo-600', 'bg-slate-400');
+            document.getElementById(`btn-q${qNum}`).classList.replace('hover:bg-indigo-700', 'hover:bg-slate-400');
+            
+            processGrading(qNum, val.replace(/\s+/g, ""));
+        }
+
+        // 실시간 채점 - 객관식 5지선다 클릭 시
+        function handleMCQ(qNum, val) {
+            if (answeredState[qNum]) return;
+            
+            const radios = document.getElementsByName(`q${qNum}`);
+            radios.forEach(r => r.disabled = true);
+            processGrading(qNum, val);
+        }
+
+        // 통합 채점 로직 및 시각적 피드백 생성
+        function processGrading(qNum, userAns) {
+            answeredState[qNum] = true;
+            const sol = quizSolutions[`q${qNum}`];
+            let isCorrect = false;
+
+            // 주관식 유연한 채점 판별
+            if (qNum === 3) {
+                isCorrect = (userAns === "고쳐쓰기" || userAns === "고쳐쓰기단계");
+            } else if (qNum === 4) {
+                isCorrect = (userAns === "아빠" || userAns === "아버지" || userAns === "택배원아빠" || userAns === "아빠의손" || userAns === "아빠의하루");
+            } else {
+                isCorrect = (userAns === sol.ans);
+            }
+
+            if (isCorrect) totalScore += 10;
+
+            const qBox = document.getElementById(`q${qNum}-box`);
+            const feedbackBox = document.getElementById(`feedback-q${qNum}`);
+            
+            // 즉각적인 시각적 피드백
+            if (isCorrect) {
+                qBox.className = "bg-white rounded-xl p-6 md:p-8 shadow-sm border-2 border-emerald-500 transition duration-300 bg-emerald-50/10";
+                feedbackBox.className = "mt-5 p-4 rounded-xl text-base leading-relaxed bg-emerald-50 text-emerald-950 font-bold border border-emerald-200 animate-fade-in";
+                feedbackBox.innerHTML = `<span class="text-emerald-700 font-black"><i class="fa-solid fa-circle-check"></i> 정답입니다!</span><br><p class="mt-2 text-sm font-medium text-slate-700"><strong>해설:</strong> ${sol.desc}</p>`;
+            } else {
+                qBox.className = "bg-white rounded-xl p-6 md:p-8 shadow-sm border-2 border-rose-500 transition duration-300 bg-rose-50/10";
+                feedbackBox.className = "mt-5 p-4 rounded-xl text-base leading-relaxed bg-rose-50 text-rose-950 font-bold border border-rose-200 animate-fade-in";
+                
+                let correctDisplay = sol.ans;
+                if (qNum <= 2) correctDisplay = `[${sol.ans}]`;
+                else if (qNum >= 5) correctDisplay = `[${sol.ans}번]`;
+                else if (qNum === 3) correctDisplay = `[고쳐쓰기]`;
+                else if (qNum === 4) correctDisplay = `[아빠]`;
+
+                let displayUserAns = userAns;
+                if (qNum >= 5) displayUserAns = `${userAns}번`;
+
+                feedbackBox.innerHTML = `<span class="text-rose-700 font-black"><i class="fa-solid fa-circle-xmark"></i> 오답입니다.</span> (내가 선택/입력한 답: <strong class="text-rose-600">${displayUserAns}</strong>)<br><p class="mt-2 text-sm text-slate-700 font-medium"><strong>정답 기준:</strong> <strong class="text-indigo-600">${correctDisplay}</strong><br><strong>해설:</strong> ${sol.desc}</p>`;
+            }
+            feedbackBox.classList.remove('hidden');
+
+            // 하단 누적 상세 분석용 HTML 추가
+            appendBreakdown(qNum, isCorrect, userAns, sol);
+
+            // 10문제를 모두 풀었을 경우 성적 보드 노출
+            if (Object.keys(answeredState).length === 10) {
+                setTimeout(showFinalResult, 500);
+            }
+        }
+
+        // 전체 분석 리스트 렌더링
+        function appendBreakdown(qNum, isCorrect, userAns, sol) {
+            const breakdownContainer = document.getElementById('quiz-breakdown');
+            const itemDiv = document.createElement('div');
+            // 문항 번호순 정렬을 위한 order 값 부여 (CSS Flex order 활용 가능)
+            itemDiv.style.order = qNum;
+            itemDiv.className = `flex flex-col p-4 md:p-5 rounded-2xl border-l-4 ${isCorrect ? 'bg-emerald-50/50 border-emerald-500 text-emerald-900' : 'bg-rose-50/50 border-rose-500 text-rose-900'}`;
+            
+            let answerDisplay = userAns;
+            if(qNum <= 2) answerDisplay = `선택 ${userAns}`;
+            else if (qNum >= 5) answerDisplay = `선택 ${userAns}번`;
+
+            itemDiv.innerHTML = `
+                <div class="flex items-center justify-between mb-2 font-black text-base md:text-lg">
+                    <span>문항 ${qNum}. ${isCorrect ? '<span class="text-emerald-600"><i class="fa-solid fa-circle-check"></i> 정답</span>' : '<span class="text-rose-600"><i class="fa-solid fa-circle-xmark"></i> 오답</span>'}</span>
+                    <span class="text-xs text-slate-500">배점 10점</span>
+                </div>
+                <p class="text-sm text-slate-700 leading-relaxed mb-3">
+                    내가 쓴 답안: <strong class="${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${answerDisplay}</strong> | 
+                    기준 모범답안: <strong class="text-indigo-600 font-bold">${qNum <= 2 || qNum >= 5 ? sol.ans : (qNum === 3 ? '고쳐쓰기' : '아빠')}</strong>
+                </p>
+                <div class="bg-white/80 p-4 rounded-xl border border-slate-100 text-sm text-slate-600 leading-relaxed">
+                    <strong><i class="fa-solid fa-quote-left text-slate-300"></i> 해설 요약:</strong> ${sol.desc}
+                </div>
+            `;
+            breakdownContainer.appendChild(itemDiv);
+            
+            // 번호 오름차순으로 HTML 요소 재배치
+            Array.from(breakdownContainer.children)
+                .sort((a, b) => a.style.order - b.style.order)
+                .forEach(node => breakdownContainer.appendChild(node));
+        }
+
+        // 최종 성적표 공개
+        function showFinalResult() {
+            document.getElementById('result-score').textContent = `${totalScore} / 100`;
+            const gradeSpan = document.getElementById('result-grade');
+            
+            if (totalScore === 100) {
+                gradeSpan.textContent = "백점 만점! 완벽해요! 🥳";
+                gradeSpan.className = "text-2xl md:text-3xl font-extrabold text-indigo-600";
+            } else if (totalScore >= 80) {
+                gradeSpan.textContent = "참 우수해요! 👍";
+                gradeSpan.className = "text-2xl md:text-3xl font-bold text-emerald-600";
+            } else if (totalScore >= 60) {
+                gradeSpan.textContent = "조금 더 힘을 내요! 😊";
+                gradeSpan.className = "text-2xl md:text-3xl font-bold text-amber-600";
+            } else {
+                gradeSpan.textContent = "개념을 다시 복습해 볼까요? ✍️";
+                gradeSpan.className = "text-2xl md:text-3xl font-bold text-rose-600";
+            }
+
+            const now = new Date();
+            const timeString = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+            document.getElementById('result-meta').textContent = `평가 완료 시각: ${timeString}`;
+
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // 모든 시험지 완전 리셋
+        function resetQuiz() {
+            if(!confirm("모든 문제의 풀이 기록을 지우고 처음부터 다시 시작하시겠습니까?")) return;
+            
+            answeredState = {};
+            totalScore = 0;
+            document.getElementById('quiz-breakdown').innerHTML = "";
+
+            // Q1, Q2 리셋
+            [1, 2].forEach(i => {
+                document.getElementById(`btn-q${i}-O`).disabled = false;
+                document.getElementById(`btn-q${i}-O`).className = "py-4 border-2 border-slate-200 bg-white rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1";
+                document.getElementById(`btn-q${i}-X`).disabled = false;
+                document.getElementById(`btn-q${i}-X`).className = "py-4 border-2 border-slate-200 bg-white rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1";
+            });
+
+            // Q3, Q4 리셋
+            [3, 4].forEach(i => {
+                document.getElementById(`input-q${i}`).value = "";
+                document.getElementById(`input-q${i}`).disabled = false;
+                const btn = document.getElementById(`btn-q${i}`);
+                btn.disabled = false;
+                btn.className = "bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-4 rounded-xl transition whitespace-nowrap";
+            });
+
+            // 객관식 라디오 리셋
+            for (let i = 5; i <= 10; i++) {
+                const radios = document.getElementsByName(`q${i}`);
+                radios.forEach(r => {
+                    r.checked = false;
+                    r.disabled = false;
+                });
+            }
+
+            // 모든 문항 피드백 및 스타일 박스 초기화
+            for (let i = 1; i <= 10; i++) {
+                const qBox = document.getElementById(`q${i}-box`);
+                const feedbackBox = document.getElementById(`feedback-q${i}`);
+                qBox.className = "bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300";
+                feedbackBox.className = "hidden mt-5 p-4 rounded-xl text-sm leading-relaxed";
+                feedbackBox.innerHTML = "";
+            }
+
+            document.getElementById('quiz-result').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showAlert("평가가 초기화되었습니다. 다시 도전해 보세요!");
+        }
+    </script>
+</body>
+</html>
