@@ -310,13 +310,13 @@
         <!-- ==================== 3. 형성 평가 탭 ==================== -->
         <div id="section-quiz" class="hidden space-y-10 animate-fade-in">
             
-            <!-- 인적 사항 입력 섹션 (시험 전 필수) -->
+            <!-- 인적 사항 입력 섹션 -->
             <div id="quiz-auth-card" class="bg-white rounded-3xl p-8 md:p-12 shadow-xl max-w-xl mx-auto border-t-8 border-indigo-600 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-50 rounded-full -z-10"></div>
                 <div class="text-center mb-10">
                     <span class="p-4 bg-indigo-50 text-indigo-600 rounded-full inline-block mb-4"><i class="fa-solid fa-id-card text-3xl"></i></span>
                     <h2 class="text-3xl font-black text-slate-900">형성 평가 응시자 정보</h2>
-                    <p class="text-slate-500 text-base mt-2 font-bold">정확한 채점과 실시간 결과 분석을 위해 인적 사항을 작성해 주세요.</p>
+                    <p class="text-slate-500 text-base mt-2 font-bold">정확한 채점과 실시간 결과 수집을 위해 인적 사항을 작성해 주세요.</p>
                 </div>
                 <div class="space-y-6">
                     <div class="grid grid-cols-3 gap-4">
@@ -360,7 +360,7 @@
                     </button>
                 </div>
 
-                <!-- 10개 문제 컨테이너 (실시간 채점 및 피드백) -->
+                <!-- 10개 문제 컨테이너 -->
                 <div class="space-y-8">
 
                     <!-- Q1 -->
@@ -585,13 +585,13 @@
                             </label>
                             <label class="flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-base font-semibold">
                                 <input type="radio" name="q8" value="5" onclick="handleMCQ(8, this.value)" class="w-5 h-5 text-indigo-600 focus:ring-indigo-500">
-                                <span>⑤ 설의법: 누구나 당연히 알고 있는 사실을 질문 형식으로 유도하여 결론을 강하게 설득한다.</span>
+                                <span>⑤ 설의법: 누구나 당연히 알고 있는 사실을 질문 형식 유도하여 결론을 강하게 설득한다.</span>
                             </label>
                         </div>
                         <div id="feedback-q8" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q9 (기존 10번 스왑) -->
+                    <!-- Q9 -->
                     <div id="q9-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q9</span>
@@ -623,7 +623,7 @@
                         <div id="feedback-q9" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q10 (기존 9번 스왑) -->
+                    <!-- Q10 -->
                     <div id="q10-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q10</span>
@@ -657,7 +657,14 @@
 
                 </div>
 
-                <!-- 전체 성적 결과 보드 (10문항 완료 시 자동 노출) -->
+                <!-- 답안 제출 및 전체 결과 버튼 -->
+                <div class="text-center pt-8">
+                    <button onclick="submitQuiz()" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-extrabold text-xl py-5 px-12 rounded-2xl shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> 최종 결과 확인 및 제출 완료하기
+                    </button>
+                </div>
+
+                <!-- 전체 성적 결과 보드 -->
                 <div id="quiz-result" class="hidden bg-white border-2 border-indigo-600 rounded-3xl p-8 md:p-10 shadow-xl mt-12 animate-fade-in">
                     <div class="text-center pb-6 border-b border-slate-100">
                         <span class="text-sm font-black text-indigo-600 bg-indigo-50 px-4 py-2 rounded-full uppercase">평가 결과 리포트</span>
@@ -687,7 +694,7 @@
 
                     <div class="flex justify-center mt-10">
                         <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-black px-8 py-4 rounded-xl text-base transition flex items-center gap-2 shadow-sm">
-                            <i class="fa-solid fa-rotate-left"></i> 오답 지우고 다시 풀기
+                            <i class="fa-solid fa-rotate-left"></i> 평가 초기화하고 다시 풀기
                         </button>
                     </div>
                 </div>
@@ -755,7 +762,7 @@
             { word: "인용(引用)", meaning: "남의 말이나 글을 자신의 글이나 말 속에 끌어다 씀.", example: "그는 유명한 학자의 명언을 인용하여 자신의 주장을 논리적으로 뒷받침했다." },
             { word: "운송장(運送狀)", meaning: "짐을 실어 보낼 때 그 내용을 적어 보내는 문서.", example: "택배 기사님은 상자에 붙은 운송장 번호와 주소를 꼼꼼히 확인하셨다." },
             { word: "강화(強化)하다", meaning: "세력이나 힘을 더 강하고 튼튼하게 하다.", example: "환절기를 맞아 기초 체력을 강화하기 위해 매일 걷기 운동을 시작했다." },
-            { word: "묘사(描寫)", meaning: "어떤 대상이나 사물, 현상 따위를 언어로 서술하여 그림을 그리듯 생생하게 표현함.", example: "그 소설은 주인공의 미세한 표정 변화까지 섬세하게 묘사하고 있다." },
+            { word: "묘사(描寫)", 실효성: "어떤 대상이나 사물, 현상 따위를 언어로 서술하여 그림을 그리듯 생생하게 표현함.", example: "그 소설은 주인공의 미세한 표정 변화까지 섬세하게 묘사하고 있다." },
             { word: "개성(個性)", meaning: "다른 사람이나 개체와 구별되는 고유의 특성.", example: "우리 반 친구들은 저마다 뚜렷한 개성을 지니고 있어 단합할 때 즐겁다." },
             { word: "포착(捕捉)하다", meaning: "어떤 기회나 정세를 알아차리다. 또는 요점을 꼭 집어내다.", example: "노련한 사진작가는 새가 날아오르는 결정적인 순간을 완벽하게 포착했다." }
         ];
@@ -766,7 +773,7 @@
             vocabItems.forEach((vocab, i) => {
                 const card = document.createElement('div');
                 card.className = "perspective-1000 h-80 cursor-pointer";
-                card.onclick = () => card.firstElementChild.classList.toggle('[transform:rotateY(180deg)]');
+                card.onclick = () => card.firstElementChild.classList.toggle('rotate-y-180');
                 
                 card.innerHTML = `
                     <div class="w-full h-full transform-style-3d transition-transform duration-500 relative flex items-center justify-center">
@@ -784,7 +791,7 @@
                         <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-indigo-950 text-white rounded-2xl p-6 flex flex-col justify-between shadow-md border-2 border-indigo-500">
                             <div>
                                 <span class="text-xs md:text-sm text-yellow-300 font-extrabold uppercase tracking-wider block mb-2">사전적 의미</span>
-                                <p class="text-base md:text-lg text-slate-100 font-bold leading-relaxed">${vocab.meaning}</p>
+                                <p class="text-base md:text-lg text-slate-100 font-bold leading-relaxed">${vocab.meaning || vocab.실효성}</p>
                             </div>
                             <div class="border-t border-indigo-900/60 pt-4">
                                 <span class="text-xs md:text-sm text-teal-300 font-extrabold uppercase tracking-wider block mb-2">실전 문맥 예문</span>
@@ -799,12 +806,13 @@
         renderVocabCards();
 
 
-        // ==================== [3. 형성 평가 실시간 채점 로직] ====================
+        // ==================== [3. 형성 평가 실시간 채점 및 구글 시트 직접 연동(google.script.run) 로직] ====================
         let currentUser = null;
-        let answeredState = {}; // 각 문항별 응답 상태 (중복 채점 방지)
+        let answeredState = {}; 
+        let quizResultsData = {}; 
         let totalScore = 0;
+        let isSubmitted = false;
 
-        // 정답 정렬 및 해설지 매핑 (9, 10번 스왑 반영됨)
         const quizSolutions = {
             q1: { ans: "O", desc: "정서를 표현하는 글(예: 수필 등)을 쓰는 과정에서 자신의 지난 삶과 경험을 깊이 있게 <strong>성찰</strong>하며 자아성장을 견인할 수 있습니다. 지문에서도 이를 올바른 사실로 밝히고 있습니다." },
             q2: { ans: "X", desc: "정서를 표현하는 글의 핵심 가치는 정보의 객관성 유지가 아니라, 주관적으로 느꼈던 내면의 감동이나 <strong>정서를 진솔하게 독자에게 표현</strong>하여 공감을 유도하는 데 있습니다." },
@@ -842,9 +850,8 @@
             document.getElementById('quiz-sheet').classList.add('hidden');
         }
 
-        // 실시간 채점 - OX 클릭 시
         function handleOX(qNum, ans) {
-            if (answeredState[qNum]) return; // 이미 풀었다면 무시
+            if (answeredState[qNum]) return; 
             
             const oBtn = document.getElementById(`btn-q${qNum}-O`);
             const xBtn = document.getElementById(`btn-q${qNum}-X`);
@@ -860,7 +867,6 @@
             processGrading(qNum, ans);
         }
 
-        // 실시간 채점 - 주관식 단답형 엔터키 감지
         function handleInputKey(e, qNum) {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -868,7 +874,6 @@
             }
         }
 
-        // 실시간 채점 - 주관식 단답형 버튼 클릭 시
         function handleShort(qNum) {
             if (answeredState[qNum]) return;
             
@@ -887,7 +892,6 @@
             processGrading(qNum, val.replace(/\s+/g, ""));
         }
 
-        // 실시간 채점 - 객관식 5지선다 클릭 시
         function handleMCQ(qNum, val) {
             if (answeredState[qNum]) return;
             
@@ -896,13 +900,11 @@
             processGrading(qNum, val);
         }
 
-        // 통합 채점 로직 및 시각적 피드백 생성
         function processGrading(qNum, userAns) {
             answeredState[qNum] = true;
             const sol = quizSolutions[`q${qNum}`];
             let isCorrect = false;
 
-            // 주관식 유연한 채점 판별
             if (qNum === 3) {
                 isCorrect = (userAns === "고쳐쓰기" || userAns === "고쳐쓰기단계");
             } else if (qNum === 4) {
@@ -913,10 +915,14 @@
 
             if (isCorrect) totalScore += 10;
 
+            quizResultsData[qNum] = {
+                ans: userAns,
+                isCorrect: isCorrect ? 'O' : 'X'
+            };
+
             const qBox = document.getElementById(`q${qNum}-box`);
             const feedbackBox = document.getElementById(`feedback-q${qNum}`);
             
-            // 즉각적인 시각적 피드백
             if (isCorrect) {
                 qBox.className = "bg-white rounded-xl p-6 md:p-8 shadow-sm border-2 border-emerald-500 transition duration-300 bg-emerald-50/10";
                 feedbackBox.className = "mt-5 p-4 rounded-xl text-base leading-relaxed bg-emerald-50 text-emerald-950 font-bold border border-emerald-200 animate-fade-in";
@@ -938,20 +944,12 @@
             }
             feedbackBox.classList.remove('hidden');
 
-            // 하단 누적 상세 분석용 HTML 추가
             appendBreakdown(qNum, isCorrect, userAns, sol);
-
-            // 10문제를 모두 풀었을 경우 성적 보드 노출
-            if (Object.keys(answeredState).length === 10) {
-                setTimeout(showFinalResult, 500);
-            }
         }
 
-        // 전체 분석 리스트 렌더링
         function appendBreakdown(qNum, isCorrect, userAns, sol) {
             const breakdownContainer = document.getElementById('quiz-breakdown');
             const itemDiv = document.createElement('div');
-            // 문항 번호순 정렬을 위한 order 값 부여 (CSS Flex order 활용 가능)
             itemDiv.style.order = qNum;
             itemDiv.className = `flex flex-col p-4 md:p-5 rounded-2xl border-l-4 ${isCorrect ? 'bg-emerald-50/50 border-emerald-500 text-emerald-900' : 'bg-rose-50/50 border-rose-500 text-rose-900'}`;
             
@@ -974,13 +972,26 @@
             `;
             breakdownContainer.appendChild(itemDiv);
             
-            // 번호 오름차순으로 HTML 요소 재배치
             Array.from(breakdownContainer.children)
                 .sort((a, b) => a.style.order - b.style.order)
                 .forEach(node => breakdownContainer.appendChild(node));
         }
 
-        // 최종 성적표 공개
+        function submitQuiz() {
+            if (Object.keys(answeredState).length < 10) {
+                showAlert("아직 풀지 않은 문제가 있습니다. 10문항을 모두 완료한 후 제출해 주세요.");
+                return;
+            }
+            if (isSubmitted) {
+                showAlert("이미 제출이 완료되었습니다.");
+                return;
+            }
+
+            isSubmitted = true;
+            showFinalResult();
+            sendDataViaInternalProtocol();
+        }
+
         function showFinalResult() {
             document.getElementById('result-score').textContent = `${totalScore} / 100`;
             const gradeSpan = document.getElementById('result-grade');
@@ -1007,15 +1018,44 @@
             document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // 모든 시험지 완전 리셋
+        function sendDataViaInternalProtocol() {
+            const dataToSave = {
+                grade: currentUser.grade,
+                classVal: currentUser.classVal,
+                numVal: currentUser.numVal,
+                name: currentUser.name,
+                totalScore: totalScore // 총점 데이터 추가 전송
+            };
+
+            for (let i = 1; i <= 10; i++) {
+                dataToSave['q' + i + '_ans'] = quizResultsData[i].ans;
+                dataToSave['q' + i + '_correct'] = quizResultsData[i].isCorrect;
+            }
+
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run
+                    .withSuccessHandler(function(response) {
+                        console.log('구글 시트에 성공적으로 자동 저장되었습니다.', response);
+                    })
+                    .withFailureHandler(function(error) {
+                        console.error('구글 시트 저장 실패:', error);
+                    })
+                    .saveQuizData(dataToSave);
+            } else {
+                console.log('현재 구글 앱스 스크립트 환경이 아닙니다. (실습창/로컬 등)');
+                console.log('저장될 예정이었던 데이터:', dataToSave);
+            }
+        }
+
         function resetQuiz() {
             if(!confirm("모든 문제의 풀이 기록을 지우고 처음부터 다시 시작하시겠습니까?")) return;
             
             answeredState = {};
+            quizResultsData = {};
             totalScore = 0;
+            isSubmitted = false;
             document.getElementById('quiz-breakdown').innerHTML = "";
 
-            // Q1, Q2 리셋
             [1, 2].forEach(i => {
                 document.getElementById(`btn-q${i}-O`).disabled = false;
                 document.getElementById(`btn-q${i}-O`).className = "py-4 border-2 border-slate-200 bg-white rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1";
@@ -1023,7 +1063,6 @@
                 document.getElementById(`btn-q${i}-X`).className = "py-4 border-2 border-slate-200 bg-white rounded-xl font-bold hover:bg-slate-50 transition flex flex-col items-center justify-center gap-1";
             });
 
-            // Q3, Q4 리셋
             [3, 4].forEach(i => {
                 document.getElementById(`input-q${i}`).value = "";
                 document.getElementById(`input-q${i}`).disabled = false;
@@ -1032,7 +1071,6 @@
                 btn.className = "bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-4 rounded-xl transition whitespace-nowrap";
             });
 
-            // 객관식 라디오 리셋
             for (let i = 5; i <= 10; i++) {
                 const radios = document.getElementsByName(`q${i}`);
                 radios.forEach(r => {
@@ -1041,7 +1079,6 @@
                 });
             }
 
-            // 모든 문항 피드백 및 스타일 박스 초기화
             for (let i = 1; i <= 10; i++) {
                 const qBox = document.getElementById(`q${i}-box`);
                 const feedbackBox = document.getElementById(`feedback-q${i}`);
