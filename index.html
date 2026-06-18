@@ -46,31 +46,32 @@
 
     <!-- 상단 헤더 -->
     <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-                <span class="bg-white text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center font-black text-xl shadow">국어</span>
-                <div>
-                    <span class="text-sm text-indigo-100 block font-bold">비상교육 중등 국어 1-2</span>
-                    <h1 class="text-2xl md:text-3xl font-black tracking-tight">1-2-1 (2) 정서를 표현하는 글 쓰기</h1>
-                </div>
+        <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-center gap-4">
+            <span class="bg-white text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center font-black text-xl shadow">국어</span>
+            <div class="text-left">
+                <span class="text-sm text-indigo-100 block font-bold">비상교육 중등 국어 1-2</span>
+                <h1 class="text-2xl md:text-3xl font-black tracking-tight">1-2-1 (2) 정서를 표현하는 글 쓰기</h1>
             </div>
-            <!-- 내비게이션 탭 -->
-            <nav class="flex bg-indigo-700/50 p-1.5 rounded-xl backdrop-blur-sm">
-                <button onclick="changeTab('concept')" id="tab-concept" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 bg-white text-indigo-700 shadow">
-                    <i class="fa-solid fa-graduation-cap mr-1"></i> 개념 학습
-                </button>
-                <button onclick="changeTab('vocab')" id="tab-vocab" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 text-indigo-100 hover:text-white">
-                    <i class="fa-solid fa-rectangle-list mr-1"></i> 어휘 정리
-                </button>
-                <button onclick="changeTab('quiz')" id="tab-quiz" class="px-5 py-2.5 rounded-lg font-black text-base transition-all duration-300 text-indigo-100 hover:text-white">
-                    <i class="fa-solid fa-pen-to-square mr-1"></i> 형성 평가
-                </button>
-            </nav>
         </div>
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
     <main class="max-w-6xl mx-auto px-4 py-10">
+
+        <!-- 탭 내비게이션 (헤더와 본문 사이, 가운데 정렬) -->
+        <div class="flex justify-center mb-12 animate-fade-in">
+            <nav class="flex flex-wrap justify-center bg-white shadow-md p-2 rounded-2xl border border-slate-200 gap-2 sm:gap-4">
+                <button onclick="changeTab('concept')" id="tab-concept" class="px-6 py-3 rounded-xl font-black text-lg transition-all duration-300 bg-indigo-600 text-white shadow-md">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> 개념 학습
+                </button>
+                <button onclick="changeTab('vocab')" id="tab-vocab" class="px-6 py-3 rounded-xl font-black text-lg transition-all duration-300 text-slate-500 hover:bg-slate-100 hover:text-indigo-600">
+                    <i class="fa-solid fa-rectangle-list mr-1"></i> 어휘 정리
+                </button>
+                <button onclick="changeTab('quiz')" id="tab-quiz" class="px-6 py-3 rounded-xl font-black text-lg transition-all duration-300 text-slate-500 hover:bg-slate-100 hover:text-indigo-600">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> 형성 평가
+                </button>
+            </nav>
+        </div>
 
         <!-- ==================== 1. 개념 탭 ==================== -->
         <div id="section-concept" class="space-y-10 animate-fade-in">
@@ -402,7 +403,7 @@
                         <div id="feedback-q2" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q3 (단답형 - 실시간 채점 지원) -->
+                    <!-- Q3 (단답형) -->
                     <div id="q3-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q3</span>
@@ -418,7 +419,7 @@
                         <div id="feedback-q3" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q4 (단답형 - 실시간 채점 지원) -->
+                    <!-- Q4 (단답형) -->
                     <div id="q4-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q4</span>
@@ -498,7 +499,7 @@
                         <div id="feedback-q6" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- 공통 지문 수록 박스 (7번 문항 전으로 위치 이동) -->
+                    <!-- 공통 지문 수록 박스 -->
                     <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-8 md:p-10 shadow-inner my-12">
                         <span class="text-sm bg-amber-100 text-amber-800 font-black px-3 py-1.5 rounded-md inline-block mb-4">공통 지문 [문제 7 - 9]</span>
                         <h3 class="text-xl font-black text-slate-900 mb-5">[7~9] 다음을 읽고 물음에 답하시오.</h3>
@@ -526,7 +527,7 @@
                         </div>
                     </div>
 
-                    <!-- Q7 (5지선다) -->
+                    <!-- Q7 -->
                     <div id="q7-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q7</span>
@@ -558,7 +559,7 @@
                         <div id="feedback-q7" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q8 (5지선다) -->
+                    <!-- Q8 -->
                     <div id="q8-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q8</span>
@@ -590,7 +591,7 @@
                         <div id="feedback-q8" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q9 (기존 10번 위치 스왑) -->
+                    <!-- Q9 (기존 10번 스왑) -->
                     <div id="q9-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q9</span>
@@ -622,7 +623,7 @@
                         <div id="feedback-q9" class="hidden mt-5 p-4 rounded-xl text-sm leading-relaxed"></div>
                     </div>
 
-                    <!-- Q10 (기존 9번 위치 스왑) -->
+                    <!-- Q10 (기존 9번 스왑) -->
                     <div id="q10-box" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-slate-200 transition duration-300">
                         <div class="flex items-center gap-2 mb-4">
                             <span class="bg-indigo-600 text-white rounded-full text-sm font-black px-3 py-1">Q10</span>
